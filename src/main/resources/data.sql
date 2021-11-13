@@ -1,0 +1,4 @@
+INSERT INTO role(id, name) VALUES (1, 'ROLE_REGISTER');
+INSERT INTO role(id, name) VALUES(2, 'ROLE_MECHANIC');
+INSERT INTO role(id, name) VALUES(3, 'ROLE_ADMIN');
+INSERT INTO role(id, name) VALUES(4, 'ROLE_BACKOFFICE');
