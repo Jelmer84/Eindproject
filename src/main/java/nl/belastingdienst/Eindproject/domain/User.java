@@ -9,6 +9,8 @@ import java.util.Set;
 public class User {
 
     @Id
+//    @TableGenerator(name = "ID_GENERATOR", initialValue = 5)
+
     @GeneratedValue(generator = "ID_GENERATOR")
     private int id;
 
@@ -23,7 +25,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<Role>();
 
-    public User() {}
+    public User() {
+
+    }
 
     public User(String username, String email, String password) {
         this.username = username;

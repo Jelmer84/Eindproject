@@ -65,7 +65,7 @@ public class AuthorizationService {
     }
 
     public ResponseEntity<MessageResponse> registerUser(@Valid SignupRequest signUpRequest) {
-        if (Boolean.TRUE.equals(userRepository.existsByUsername(signUpRequest.getEmail()))) {
+        if (Boolean.TRUE.equals(userRepository.existsByEmail(signUpRequest.getEmail()))) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));

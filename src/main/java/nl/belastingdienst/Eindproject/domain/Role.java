@@ -38,14 +38,43 @@ public class Role {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> User_id = new ArrayList<User>();
-
-    public Collection<User> getUser_id() {
-        return User_id;
-    }
-
-    public void setUser_id(Collection<User> user_id) {
-        User_id = user_id;
-    }
+//    @ManyToMany(mappedBy = "roles")
+//    private Collection<User> User_id = new ArrayList<User>();
+//
+//    public Collection<User> getUser_id() {
+//        return User_id;
+//    }
+//
+//    public void setUser_id(Collection<User> user_id) {
+//        User_id = user_id;
+//    }
 }
+
+
+
+
+//@Entity
+//class Course {
+//
+//    @Id
+//    Long id;
+//
+//    @ManyToMany(mappedBy = "likedCourses")
+//    Set<Student> likes;
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public Set<Student> getLikes() {
+//        return likes;
+//    }
+//
+//    public void setLikes(Set<Student> likes) {
+//        this.likes = likes;
+//    }
+//}
