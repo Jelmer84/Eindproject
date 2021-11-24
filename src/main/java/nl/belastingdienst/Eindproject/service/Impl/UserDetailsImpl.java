@@ -1,4 +1,4 @@
-package nl.belastingdienst.Eindproject.service;
+package nl.belastingdienst.Eindproject.service.Impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import nl.belastingdienst.Eindproject.domain.User;

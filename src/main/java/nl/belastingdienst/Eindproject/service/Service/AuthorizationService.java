@@ -1,4 +1,4 @@
-package nl.belastingdienst.Eindproject.service;
+package nl.belastingdienst.Eindproject.service.Service;
 
 import nl.belastingdienst.Eindproject.domain.ERole;
 import nl.belastingdienst.Eindproject.domain.Role;
@@ -9,8 +9,8 @@ import nl.belastingdienst.Eindproject.payload.response.JwtResponse;
 import nl.belastingdienst.Eindproject.payload.response.MessageResponse;
 import nl.belastingdienst.Eindproject.repository.RoleRepository;
 import nl.belastingdienst.Eindproject.repository.UserRepository;
+import nl.belastingdienst.Eindproject.service.Impl.UserDetailsImpl;
 import nl.belastingdienst.Eindproject.service.security.jwt.JwtUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -74,10 +74,9 @@ public class AuthorizationService {
         if (Boolean.TRUE.equals(userRepository.existsByEmail(signUpRequest.getEmail()))) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already in use!"));
+                    .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
@@ -86,11 +85,7 @@ public class AuthorizationService {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles.equals( "admin" ) || strRoles.equals("mech") || strRoles.equals("back") || strRoles.equals("reg")) {
-
             throw new RuntimeException(ROLE_NOT_FOUND_ERROR);
-//            Role registerRole = roleRepository.findByName(ERole.ROLE_REGISTER)
-//                    .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
-//            roles.add(registerRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
@@ -117,11 +112,6 @@ public class AuthorizationService {
                                 .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
                         roles.add(registerRole);
                         break;
-
-//                    default:
-//                        Role registerRole = roleRepository.findByName(ERole.ROLE_REGISTER)
-//                                .orElseThrow(() -> new RuntimeException(ROLE_NOT_FOUND_ERROR));
-//                        roles.add(registerRole);
                 }
             });
         }
@@ -132,9 +122,7 @@ public class AuthorizationService {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-
     public ResponseEntity<JwtResponse> authenticateUser(@Valid LoginRequest loginRequest) {
-
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                         loginRequest.getPassword()));
@@ -155,3 +143,5 @@ public class AuthorizationService {
     }
 
 }
+
+

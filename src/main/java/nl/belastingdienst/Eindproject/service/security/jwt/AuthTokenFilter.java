@@ -1,6 +1,6 @@
 package nl.belastingdienst.Eindproject.service.security.jwt;
 
-import nl.belastingdienst.Eindproject.service.UserDetailsServiceImpl;
+import nl.belastingdienst.Eindproject.service.Impl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +57,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith(TOKEN_TYPE)) {
             return headerAuth.substring(TOKEN_TYPE.length());
         }
+
         return null;
     }
 }

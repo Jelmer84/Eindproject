@@ -4,7 +4,7 @@ import nl.belastingdienst.Eindproject.payload.request.LoginRequest;
 import nl.belastingdienst.Eindproject.payload.request.SignupRequest;
 import nl.belastingdienst.Eindproject.payload.response.JwtResponse;
 import nl.belastingdienst.Eindproject.payload.response.MessageResponse;
-import nl.belastingdienst.Eindproject.service.AuthorizationService;
+import nl.belastingdienst.Eindproject.service.Service.AuthorizationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

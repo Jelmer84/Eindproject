@@ -9,11 +9,8 @@ import java.util.Set;
 public class User {
 
     @Id
-//    @TableGenerator(name = "ID_GENERATOR", initialValue = 5)
-
     @GeneratedValue(generator = "ID_GENERATOR")
     private int id;
-
     private String username;
     private String email;
     private String password;
@@ -26,7 +23,6 @@ public class User {
     private Set<Role> roles = new HashSet<Role>();
 
     public User() {
-
     }
 
     public User(String username, String email, String password) {
@@ -75,3 +71,5 @@ public class User {
         this.roles = roles;
     }
 }
+
+

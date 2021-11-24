@@ -1,4 +1,4 @@
-package nl.belastingdienst.Eindproject.service;
+package nl.belastingdienst.Eindproject.service.Impl;
 
 import nl.belastingdienst.Eindproject.domain.User;
 import nl.belastingdienst.Eindproject.repository.UserRepository;
