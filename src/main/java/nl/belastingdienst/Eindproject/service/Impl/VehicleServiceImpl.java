@@ -12,8 +12,8 @@ import nl.belastingdienst.Eindproject.repository.VehicleRepository;
 import nl.belastingdienst.Eindproject.service.Service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -106,10 +106,10 @@ public class VehicleServiceImpl implements VehicleService {
                 vehicle.getCustomer().getId())).collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public void deleteAllByCustomer(Customer customer) {
         List<Vehicle> allById = repository.findAllByCustomer(customer);
-        // repository.de
         repository.deleteAll(allById);
     }
 

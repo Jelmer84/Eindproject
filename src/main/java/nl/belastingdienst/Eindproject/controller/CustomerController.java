@@ -2,6 +2,7 @@ package nl.belastingdienst.Eindproject.controller;
 
 import nl.belastingdienst.Eindproject.domain.Customer;
 import nl.belastingdienst.Eindproject.service.Service.CustomerService;
+import nl.belastingdienst.Eindproject.service.Service.RepairService;
 import nl.belastingdienst.Eindproject.service.Service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class CustomerController {
     @Autowired
     VehicleService vehicleService;
 
+    @Autowired
+    RepairService repairService;
+
     @PostMapping("/create")
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
         return new ResponseEntity<>(service.saveCustomer(customer), HttpStatus.CREATED);
@@ -38,7 +42,10 @@ public class CustomerController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteObject(@PathVariable Long id) {
-        vehicleService.deleteAllByCustomer(service.getObjectByID(id));
-        return new ResponseEntity<>(service.deleteObject(id), HttpStatus.OK);
+        Customer objectByID = service.getObjectByID(id);
+        repairService.deleteAllByCustomer(objectByID);
+        vehicleService.deleteAllByCustomer(objectByID);
+        String s = service.deleteObject(id);
+        return new ResponseEntity<>(s, HttpStatus.OK);
     }
 }

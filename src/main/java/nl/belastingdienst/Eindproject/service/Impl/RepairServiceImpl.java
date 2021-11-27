@@ -6,6 +6,7 @@ import nl.belastingdienst.Eindproject.repository.*;
 import nl.belastingdienst.Eindproject.service.Service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -107,5 +108,12 @@ public class RepairServiceImpl implements RepairService {
     public String deleteObject(Long id) {
         repository.deleteById(id);
         return "Object removed!"+id;
+    }
+
+    @Transactional
+    @Override
+    public void deleteAllByCustomer(Customer customer) {
+        List<Repair> allById = repository.findAllByCustomer(customer);
+        repository.deleteAll(allById);
     }
 }

@@ -1,5 +1,6 @@
 package nl.belastingdienst.Eindproject.service.Service;
 
+import nl.belastingdienst.Eindproject.domain.Customer;
 import nl.belastingdienst.Eindproject.domain.Repair;
 import nl.belastingdienst.Eindproject.domain.RepairResponse;
 import nl.belastingdienst.Eindproject.domain.StatusProcess;
@@ -23,4 +24,5 @@ public interface RepairService {
 
     String deleteObject(Long id);
 
+    void deleteAllByCustomer(Customer customer);
 }
