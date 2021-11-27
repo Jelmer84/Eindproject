@@ -1,12 +1,8 @@
 package nl.belastingdienst.Eindproject.service.security.jwt;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
-import nl.belastingdienst.Eindproject.service.UserDetailsImpl;
+import io.jsonwebtoken.*;
+import nl.belastingdienst.Eindproject.service.Impl.UserDetailsImpl;
+import nl.belastingdienst.Eindproject.service.Impl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +15,6 @@ import java.util.Date;
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    // Deze waardes staan geconfigureerd in application.properties
     @Value("${novi.sec.jwtSecret}")
     private String jwtSecret;
 

@@ -1,10 +1,6 @@
 package nl.belastingdienst.Eindproject.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
 
 @Entity
 public class Role {
@@ -16,7 +12,8 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private ERole name;
 
-    public Role() {}
+    public Role() {
+    }
 
     public Role(ERole name) {
         this.name = name;
@@ -37,44 +34,4 @@ public class Role {
     public void setName(ERole name) {
         this.name = name;
     }
-
-//    @ManyToMany(mappedBy = "roles")
-//    private Collection<User> User_id = new ArrayList<User>();
-//
-//    public Collection<User> getUser_id() {
-//        return User_id;
-//    }
-//
-//    public void setUser_id(Collection<User> user_id) {
-//        User_id = user_id;
-//    }
 }
-
-
-
-
-//@Entity
-//class Course {
-//
-//    @Id
-//    Long id;
-//
-//    @ManyToMany(mappedBy = "likedCourses")
-//    Set<Student> likes;
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Set<Student> getLikes() {
-//        return likes;
-//    }
-//
-//    public void setLikes(Set<Student> likes) {
-//        this.likes = likes;
-//    }
-//}
